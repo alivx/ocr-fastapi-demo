@@ -1,0 +1,55 @@
+version: '3.3'
+services:
+  minio:
+    image: minio/minio
+    container_name: minio
+    ports:
+      - "0.0.0.0:9000:9000"
+    environment:
+      MINIO_ROOT_USER: dc6af2af-194f-47e2-9e6a-a6008158da81
+      MINIO_ROOT_PASSWORD: 4c263f63-19dc-454e-ad93-dfddecdeaf12
+      MINIO_VOLUMES: /data
+    command: server --address 0.0.0.0:9000 /data
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "0.0.0.0:6379:6379"
+
+  api-sync:
+    container_name: apisync
+    restart: always
+    build:
+      context: ./
+      dockerfile: sync/Dockerfile
+    ports:
+      - "0.0.0.0:8000:8000"
+
+  api-async:
+    container_name: apiasync
+    restart: always
+    build:
+      context: ./
+      dockerfile: async/Dockerfile
+    ports:
+      - "0.0.0.0:8001:8000"
+
+  api-async-rq:
+    container_name: apiasyncrq
+    restart: always
+    build:
+      context: ./
+      dockerfile: async-rq/Dockerfile
+    ports:
+      - "0.0.0.0:8002:8000"
+
+  # stress:
+  #   container_name: stress
+  #   restart: always
+  #   build:
+  #     context: ./
+  #     dockerfile: stress/Dockerfile
+  #   ports:
+  #     - "0.0.0.0:8089:8089"
+

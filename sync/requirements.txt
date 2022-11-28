@@ -1,0 +1,4 @@
+fastapi==0.88.0
+minio==7.1.12
+pytesseract==0.3.10
+uvicorn==0.18.2
