@@ -13,9 +13,16 @@ Using:
 2. aiopytesseract
 3. miniopy_async
 
+https://github.com/alivx/ocr-fastapi-demo/blob/master
+
+<img src="https://raw.githubusercontent.com/alivx/ocr-fastapi-demo/master/files/async.jpg" alt="sample1" style="zoom:50%;" />
+
+
 ### Sync
 
 1. pytesseract
+
+<img src="https://raw.githubusercontent.com/alivx/ocr-fastapi-demo/master/files/sync.jpg" alt="sample1" style="zoom:50%;" />
 
 
  
